@@ -16,13 +16,23 @@
 
 using namespace std;
 
-#define INF (1<<20)
-#define PI 3.14159265
-
-class ToastXRaspberry {
+class AdditionGame {
 public:
-  int apply(int upper_limit, int layer_count)
+  int
+	getMaximumPoints(int A, int B, int C, int N)
 	{
-		return (layer_count/upper_limit) + (layer_count%upper_limit==0?0:1);
+		priority_queue<int> pq;
+		pq.push(A),pq.push(B),pq.push(C);
+		int ans = 0;
+		for (int i=0; i<N; ++i) {
+			if(pq.top()>=1) {
+				int p = pq.top();
+				pq.pop();
+				ans += p;
+				pq.push(p-1);
+			}
+		}
+
+		return ans;
 	}
 };

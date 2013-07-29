@@ -16,13 +16,16 @@
 
 using namespace std;
 
-#define INF (1<<20)
-#define PI 3.14159265
-
-class ToastXRaspberry {
+class AnagramFree {
 public:
-  int apply(int upper_limit, int layer_count)
+  int
+	getMaximumSubset(vector <string> S)
 	{
-		return (layer_count/upper_limit) + (layer_count%upper_limit==0?0:1);
+		set<string> w;
+		for (int i=0; i<S.size(); ++i) {
+			sort(S[i].begin(), S[i].end());
+			w.insert(S[i]);
+		}
+		return (int)w.size();
 	}
 };

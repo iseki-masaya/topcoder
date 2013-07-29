@@ -16,13 +16,21 @@
 
 using namespace std;
 
-#define INF (1<<20)
-#define PI 3.14159265
-
-class ToastXRaspberry {
+class
+SRMCards {
 public:
-  int apply(int upper_limit, int layer_count)
+  int
+	maxTurns(vector <int> cards)
 	{
-		return (layer_count/upper_limit) + (layer_count%upper_limit==0?0:1);
+		sort(cards.begin(), cards.end());
+		int prev = -100;
+		int ans = 0;
+		for (int i=0; i<cards.size(); ++i) {
+			if (cards[i]!=prev+1) {
+				++ans;
+				prev = cards[i];
+			}
+		}
+		return ans;
 	}
 };
